@@ -240,7 +240,7 @@ export default function App() {
   const generateTeamNames = async (count) => {
     setNamingLoading(true);
     try {
-      const res = await fetch("/api/anthropic", {
+      const res = await fetch("/.netlify/functions/anthropic", {
         method:"POST", headers:{"Content-Type":"application/json"},
         body: JSON.stringify({
           model:"claude-sonnet-4-20250514", max_tokens:300,
@@ -297,7 +297,7 @@ Return ONLY:
 {"teams":[{"name":"string","members":["name1","name2"],"description":"one friendly sentence"}],"note":"warm short overall note"}`;
 
     try {
-      const res = await fetch("/api/anthropic", {
+      const res = await fetch("/.netlify/functions/anthropic", {
         method:"POST", headers:{"Content-Type":"application/json"},
         body: JSON.stringify({model:"claude-sonnet-4-20250514", max_tokens:2500, messages:[{role:"user",content:prompt}]})
       });
